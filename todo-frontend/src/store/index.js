@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    baseUrl: '"http://localhost/todofullstack/todo-backend"'
+    baseUrl: 'http://localhost/todo'
   },
   mutations: {},
   actions: {},
