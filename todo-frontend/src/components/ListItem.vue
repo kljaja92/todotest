@@ -70,7 +70,7 @@ export default {
         },
         async addItem(list){
             if (this.newItem.length < 1) return;
-            const resBody = {content: this.newItem, status: 0, list_id: list.id};
+            const resBody = { content: this.newItem, status: 0, list_id: list.id};
             await this.$http.post(`${this.$store.state.baseUrl}/itemi`, resBody);
             this.newItem = "";
             this.$emit("update-lists");
