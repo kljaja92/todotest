@@ -1,30 +1,30 @@
 <template>
     <div>
         <b-list-group-item
-        style ="cursor: pointer;"
+        style="cursor: pointer;"
         @click="changeStatus(item)"
         v-for="(item, id) in list.itemi"
-        :key = "id"
-        id = "list-item"
-        class = "d-flex justify-content-between align-items-center"
-        :variant = "(item.status == '0')?'info':'success'"
+        :key="id"
+        id="list-item"
+        class="d-flex justify-content-between align-items-center"
+        :variant="(item.status == '0')?'info':'success'"
         >
         <div :style="(item.status == '0')?'textDecoration: none;':'textDecoration: line-through'">{{id + 1}}. {{item.content}}
     </div>
     <div>
         <Dropdown
-        type = "item"
-        id = "change-item"
-        @changeItem = "changeItem(item, ...arguments)"
-        label = "Content"
+        type="item"
+        id="change-item"
+        @changeItem="changeItem(item, ...arguments)"
+        label="Content"
         />
-        <b-badge @click.stop = "deleteItem(item)" href = "#" variant = "danger" pill> X </b-badge>
+        <b-badge @click.stop="deleteItem(item)" href="#" variant="danger" pill>X</b-badge>
     </div>
         </b-list-group-item>
-    <b-input-group class = "mt-3" style = "z-index: 0" prepend = "New item">
-        <b-form-input v-model = "newItem"></b-form-input>
+    <b-input-group class="mt-3" style="z-index: 0" prepend="New item">
+        <b-form-input v-model="newItem"></b-form-input>
         <b-input-group-apend>
-            <b-button @click="addItem(list)" size = "sm" text = "Add" variant = "success">Add</b-button>
+            <b-button @click="addItem(list)" size="sm" text="Add" variant="success">Add</b-button>
         </b-input-group-apend>
     </b-input-group>
     </div>   
@@ -52,11 +52,11 @@ export default {
                 status: item.status,
                 list_id: item.list_id
             };
-            await this.$http.put('${this.$store.state.baseUrl}/itemi/${item.id}', reqBody);
+            await this.$http.put(`${this.$store.state.baseUrl}/itemi/${item.id}`, reqBody);
             this.$emit("update-lists");
         },
         async deleteItem(item){
-            await this.$http.delete('${this.$store.state.baseUrl}/itemi/${item.id}');
+            await this.$http.delete(`${this.$store.state.baseUrl}/itemi/${item.id}`);
             this.$emit("update-lists");
         },
         async changeStatus(item) {
@@ -65,13 +65,13 @@ export default {
                 content: item.content,
                 list_id: item.list_id
             };
-            await this.$http.put('${this.$store.stsate.baseUrl}/itemi${item.id}', resBody);
+            await this.$http.put(`${this.$store.stsate.baseUrl}/itemi${item.id}`, resBody);
             this.$emit("update-lists");
         },
         async addItem(list){
             if (this.newItem.length < 1) return;
             const resBody = {content: this.newItem, status: 0, list_id: list.id};
-            await this.$http.post('${this.$store.state.baseUrl}/itemi', resBody);
+            await this.$http.post(`${this.$store.state.baseUrl}/itemi`, resBody);
             this.newItem = "";
             this.$emit("update-lists");
                 

@@ -1,16 +1,16 @@
 <template>
     <span @click.stop>
-        <b-badge @click = "enabled = true" class = "mt-2" href = "#" variant = "info" pill>Edit</b-badge>
-        <div :class = "type == 'item'? 'item-fix': '' " id="form" v-if="enabled">
+        <b-badge @click="enabled=true" class="mt-2" href="#" variant="info" pill>Edit</b-badge>
+        <div :class="type == 'item'? 'item-fix': '' " id="form" v-if="enabled">
             <b-form-input
             autofocus
-            @focusout = "enabled = false"
-            class = "mr-1"
-            v-model = "content"
-            size = "sm"
-            :placeholder = "label">
+            @focusout="enabled = false"
+            class="mr-1"
+            v-model="content"
+            size="sm"
+            :placeholder="label">
             </b-form-input>
-            <b-button @mousedown.prevent @click ="changeTitle" variant = "info" size = "sm">✔</b-button>
+            <b-button @mousedown.prevent @click="changeTitle" variant="info" size="sm">✔</b-button>
         </div>
     </span>
 </template>
