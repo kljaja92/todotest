@@ -9,7 +9,8 @@ import Navbar from "@/components/Navbar.vue";
 import List from "@/components/List.vue";
 export default {
     components: {
-        Navbar,List
+        Navbar,
+        List
     }
 };
 </script>
