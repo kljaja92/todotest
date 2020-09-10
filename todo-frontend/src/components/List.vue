@@ -2,7 +2,7 @@
     <div>
         <b-container>
             <b-row>
-            <b-col xs="12" sm="6" md="4" v-for = "list in lists" :key="list.id">
+            <b-col xs="12" sm="6" md="4" v-for="list in lists" :key="list.id">
                 <div class="controls">
                     <Dropdown label="Title" @changeItem="changeTitle(list, ...arguments)"/>
                     <b-badge @click.prevent="deleteList(list)" href="#" variant="danger" pill>X</b-badge>    
